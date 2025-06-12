@@ -2,4 +2,24 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
+  },
+  {
+    'willothy/flatten.nvim',
+    config = true,
+    -- or pass configuration with
+    opts = {
+      window = {
+        open = 'tab',
+        diff = 'tab_vsplit',
+      },
+    },
+    -- Ensure that it runs first to minimize delay when opening file from terminal
+    lazy = false,
+    priority = 1001,
+  },
+}
