@@ -85,7 +85,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 -- Some stuff we don't want to do on nixos
-local is_nixos = vim.uv.fs_stat("/etc/NIXOS")
+local is_nixos = vim.uv.fs_stat '/etc/NIXOS'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -209,9 +209,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 -- [[ Custom Keymaps ]]
-vim.keymap.set('n', '<leader>tt', '<cmd>tabnew<CR><cmd>term<CR>')
-vim.keymap.set('n', '<leader>ts', '<cmd>split<CR><cmd>term<CR>')
-vim.keymap.set('n', '<leader>tv', '<cmd>vsplit<CR><cmd>term<CR>')
+vim.keymap.set('n', '<leader>tt', '<cmd>tabnew<CR><cmd>term<CR>i')
+vim.keymap.set('n', '<leader>ts', '<cmd>split<CR><cmd>term<CR>i')
+vim.keymap.set('n', '<leader>tv', '<cmd>vsplit<CR><cmd>term<CR>i')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -309,7 +309,7 @@ require('lazy').setup({
   -- Then, because we use the `opts` key (recommended), the configuration runs
   -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -390,7 +390,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -498,7 +498,7 @@ require('lazy').setup({
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim',    opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
@@ -636,7 +636,7 @@ require('lazy').setup({
           end
         end,
 
-        vim.lsp.enable('pyright')
+        vim.lsp.enable 'pyright',
       })
 
       -- Diagnostic Config
