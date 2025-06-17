@@ -22,4 +22,11 @@ return {
     lazy = false,
     priority = 1001,
   },
+  {
+    'Decodetalkers/csharpls-extended-lsp.nvim',
+    dependenies = { 'neovim/nvim-lspconfig' },
+    config = function()
+      require('csharpls_extended').buf_read_cmd_bind()
+    end,
+  },
 }
