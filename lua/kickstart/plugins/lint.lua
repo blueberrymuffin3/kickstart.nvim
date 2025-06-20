@@ -8,6 +8,17 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
       }
+      lint.linters_by_ft = {
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+      }
+      -- TODO: Auto detect/select per project
+      lint.linters.eslint_d.args = {
+        '--config',
+        'config/eslint.config.mjs',
+        table.unpack(lint.linters.eslint_d.args),
+      }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
