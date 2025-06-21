@@ -17,7 +17,7 @@ return {
       lint.linters.eslint_d.args = {
         '--config',
         'config/eslint.config.mjs',
-        table.unpack(lint.linters.eslint_d.args),
+        unpack(lint.linters.eslint_d.args),
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
