@@ -85,7 +85,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 -- Some stuff we don't want to do on nixos
-local is_nixos = vim.uv.fs_stat '/etc/NIXOS'
+local is_nixos = not not vim.uv.fs_stat '/etc/NIXOS'
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -689,7 +689,8 @@ require('lazy').setup({
         -- pyright = {},
         rust_analyzer = {},
         csharp_ls = {},
-        nil_ls = {},
+        nil_ls = is_nixos and {} or nil,
+        ['terraformls'] = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
