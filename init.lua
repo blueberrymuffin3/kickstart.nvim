@@ -695,7 +695,8 @@ require('lazy').setup({
         rust_analyzer = {},
         csharp_ls = {},
         nil_ls = is_nixos and {} or nil,
-        ['terraformls'] = {},
+        terraformls = {},
+        jedi_language_server = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
