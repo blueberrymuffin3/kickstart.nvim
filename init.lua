@@ -792,7 +792,11 @@ require('lazy').setup({
           -- Disable "format_on_save lsp_fallback" for languages that don't
           -- have a well standardized coding style. You can add additional
           -- languages here or re-enable it for the disabled ones.
-          local disable_filetypes = { cs = true, terraform = true }
+          local disable_filetypes = {
+            cs = true,
+            xml = true, -- csproj
+            terraform = true,
+          }
           if disable_filetypes[vim.bo[bufnr].filetype] then
             return nil
           else
@@ -811,6 +815,8 @@ require('lazy').setup({
           javascript = { 'eslint_d', 'prettier' },
           typescript = { 'eslint_d', 'prettier' },
           typescriptreact = { 'eslint_d', 'prettier' },
+          css = { 'prettier' },
+          scss = { 'prettier' },
         },
         formatters = {
           -- TODO: Auto detect/select per project
