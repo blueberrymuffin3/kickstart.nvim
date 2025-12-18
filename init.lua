@@ -779,6 +779,7 @@ require('lazy').setup({
         function()
           require('conform').format({ async = true, lsp_format = 'fallback' }, function()
             require('lint').try_lint()
+            vim.cmd 'GuessIndent'
           end)
         end,
         mode = '',
