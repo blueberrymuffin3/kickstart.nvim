@@ -502,7 +502,15 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-      { 'mason-org/mason.nvim', opts = {} },
+      {
+        'mason-org/mason.nvim',
+        opts = {
+          registries = {
+            'github:mason-org/mason-registry',
+            'github:Crashdummyy/mason-registry',
+          },
+        },
+      },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -563,23 +571,21 @@ require('lazy').setup({
           -- or a suggestion from your LSP for this to activate.
           map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-          -- These are replaced by the omnisharp lsp plugin
-
           -- Find references for the word under your cursor.
-          -- map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          -- map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          -- map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          -- map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
@@ -700,7 +706,7 @@ require('lazy').setup({
         -- pyright = {},
         rust_analyzer = {},
         -- csharp_ls = {},
-        omnisharp = {},
+        roslyn = {},
         nil_ls = is_nixos and {} or nil,
         terraformls = {},
         jedi_language_server = {},

@@ -38,41 +38,12 @@ return {
   --   end,
   -- },
   {
-    'Hoffs/omnisharp-extended-lsp.nvim',
-    dependenies = { 'neovim/nvim-lspconfig' },
-    config = function()
-      vim.keymap.set('n', 'grr', function()
-        if vim.bo.filetype == 'cs' then
-          require('omnisharp_extended').telescope_lsp_references()
-        else
-          telescope_builtin.lsp_references()
-        end
-      end, { desc = 'Omnisharp: LSP References' })
-
-      vim.keymap.set('n', 'grd', function()
-        if vim.bo.filetype == 'cs' then
-          require('omnisharp_extended').telescope_lsp_definition()
-        else
-          telescope_builtin.lsp_definitions()
-        end
-      end, { desc = 'Omnisharp: LSP Definition (vsplit)' })
-
-      vim.keymap.set('n', 'grD', function()
-        if vim.bo.filetype == 'cs' then
-          require('omnisharp_extended').telescope_lsp_type_definition()
-        else
-          telescope_builtin.lsp_type_definitions()
-        end
-      end, { desc = 'Omnisharp: LSP Type Definition' })
-
-      vim.keymap.set('n', 'gri', function()
-        if vim.bo.filetype == 'cs' then
-          require('omnisharp_extended').telescope_lsp_implementation()
-        else
-          telescope_builtin.lsp_implementations()
-        end
-      end, { desc = 'Omnisharp: LSP Implementation' })
-    end,
+    'seblyng/roslyn.nvim',
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+    },
   },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
