@@ -16,7 +16,7 @@ return {
       -- TODO: Auto detect/select per project
       lint.linters.eslint_d.args = {
         '--config',
-        'config/eslint.config.mjs',
+        'config/eslint.config.ts',
         unpack(lint.linters.eslint_d.args),
       }
 

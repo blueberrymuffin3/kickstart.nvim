@@ -264,6 +264,7 @@ require('lazy').setup({
       on_tab_options = {
         ['expandtab'] = false,
         ['tabstop'] = 4,
+        ['shiftwidth'] = 4,
       },
     },
   }, -- Detect tabstop and shiftwidth automatically
@@ -827,7 +828,10 @@ require('lazy').setup({
           },
           eslint_d = {
             cwd = require('conform.util').root_file { 'package.json' },
-            prepend_args = { '--config', 'config/eslint.config.mjs' },
+            prepend_args = {
+              '--config',
+              'config/eslint.config.ts',
+            },
           },
         },
       }
