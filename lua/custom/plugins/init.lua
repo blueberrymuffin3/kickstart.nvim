@@ -3,8 +3,6 @@
 --
 -- See the kickstart.nvim README for more information
 
-telescope_builtin = require 'telescope.builtin'
-
 return {
   {
     'pmizio/typescript-tools.nvim',

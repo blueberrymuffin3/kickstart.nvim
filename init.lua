@@ -733,10 +733,17 @@ require('lazy').setup({
             },
           },
         },
+        codebook = {
+          filetypes = {
+            'cs',
+            unpack(vim.lsp.config['codebook'].filetypes),
+          },
+        },
       }
 
-      for server, _ in pairs(servers) do
+      for server, config in pairs(servers) do
         vim.lsp.enable(server)
+        vim.lsp.config(server, config)
       end
 
       -- Ensure the servers and tools above are installed
