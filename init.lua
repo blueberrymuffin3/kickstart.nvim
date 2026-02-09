@@ -808,9 +808,9 @@ require('lazy').setup({
           -- have a well standardized coding style. You can add additional
           -- languages here or re-enable it for the disabled ones.
           local disable_filetypes = {
-            cs = true,
-            xml = true, -- csproj
-            terraform = true,
+            -- cs = true,
+            xml = true,
+            -- terraform = true,
           }
           if disable_filetypes[vim.bo[bufnr].filetype] then
             return nil
