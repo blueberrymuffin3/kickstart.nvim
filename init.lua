@@ -770,7 +770,6 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'eslint_d',
       })
       if not is_nixos then
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -835,9 +834,9 @@ require('lazy').setup({
           -- python = { "isort", "black" },
           --
           -- You can use 'stop_after_first' to run the first available formatter from the list
-          javascript = { 'eslint_d', 'prettier' },
-          typescript = { 'eslint_d', 'prettier' },
-          typescriptreact = { 'eslint_d', 'prettier' },
+          javascript = { 'eslint', 'prettier' },
+          typescript = { 'eslint', 'prettier' },
+          typescriptreact = { 'eslint', 'prettier' },
           css = { 'prettier' },
           scss = { 'prettier' },
         },
@@ -845,14 +844,31 @@ require('lazy').setup({
           -- TODO: Auto detect/select per project
           prettier = {
             cwd = require('conform.util').root_file { 'package.json' },
-            prepend_args = { '--config', 'config/prettier.config.js' },
+            prepend_args = function(self, ctx)
+              local config = 'config/prettier.config.js'
+              if vim.fn.filereadable(config) then
+                return {
+                  '--config',
+                  config,
+                }
+              else
+                return {}
+              end
+            end,
           },
-          eslint_d = {
+          eslint = {
             cwd = require('conform.util').root_file { 'package.json' },
-            prepend_args = {
-              '--config',
-              'config/eslint.config.ts',
-            },
+            prepend_args = function(self, ctx)
+              local config = 'config/eslint.config.ts'
+              if vim.fn.filereadable(config) then
+                return {
+                  '--config',
+                  config,
+                }
+              else
+                return {}
+              end
+            end,
           },
         },
       }
