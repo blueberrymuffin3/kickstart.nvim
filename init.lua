@@ -841,10 +841,9 @@ require('lazy').setup({
           scss = { 'prettier' },
         },
         formatters = {
-          -- TODO: Auto detect/select per project
           prettier = {
             cwd = require('conform.util').root_file { 'package.json' },
-            prepend_args = function(self, ctx)
+            append_args = function(self, ctx)
               local config = 'config/prettier.config.js'
               if vim.fn.filereadable(config) then
                 return {
@@ -858,7 +857,7 @@ require('lazy').setup({
           },
           eslint = {
             cwd = require('conform.util').root_file { 'package.json' },
-            prepend_args = function(self, ctx)
+            append_args = function(self, ctx)
               local config = 'config/eslint.config.ts'
               if vim.fn.filereadable(config) then
                 return {
