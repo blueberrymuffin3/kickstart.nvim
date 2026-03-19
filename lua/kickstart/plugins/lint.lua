@@ -58,6 +58,10 @@ return {
       -- lint.linters_by_ft['terraform'] = nil
       -- lint.linters_by_ft['text'] = nil
 
+      fidget.options.progress.display.overrides['lint'] = {
+        ttl = 0,
+      }
+
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
@@ -77,6 +81,9 @@ return {
 
             local progress = fidget.progress.handle.create {
               title = 'Linting...',
+              lsp_client = {
+                name = 'lint',
+              },
             }
             local timer = vim.uv.new_timer()
             timer:start(0, 100, function()
