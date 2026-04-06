@@ -15,13 +15,24 @@ return {
     { '<C-\\>', '<cmd>Neotree git_status<CR>', desc = 'NeoTree git_status', silent = true },
   },
   opts = {
+    clipboard = {
+      sync = 'universal',
+    },
     filesystem = {
       filtered_items = {
+        visible = true,
         hide_dotfiles = false,
       },
       window = {
         mappings = {
           ['\\'] = 'close_window',
+        },
+      },
+    },
+    git_status = {
+      window = {
+        mappings = {
+          ['gt'] = false,
         },
       },
     },
