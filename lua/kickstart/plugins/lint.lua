@@ -9,21 +9,21 @@ return {
         markdown = { 'markdownlint' },
       }
       lint.linters_by_ft = {
-        javascript = { 'eslint' },
-        typescript = { 'eslint' },
-        typescriptreact = { 'eslint' },
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
       }
       -- TODO: Auto detect/select per project
-      lint.linters.eslint.args = {
+      lint.linters.eslint_d.args = {
         function()
           local config = 'config/eslint.config.ts'
           if vim.fn.filereadable(config) then
             return '--config=' .. config
           else
-            return
+            return nil
           end
         end,
-        unpack(lint.linters.eslint.args),
+        unpack(lint.linters.eslint_d.args),
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

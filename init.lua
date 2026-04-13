@@ -326,7 +326,7 @@ require('lazy').setup({
   -- Then, because we use the `opts` key (recommended), the configuration runs
   -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -407,7 +407,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -774,6 +774,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'eslint_d',
       })
       if not is_nixos then
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -838,9 +839,9 @@ require('lazy').setup({
           -- python = { "isort", "black" },
           --
           -- You can use 'stop_after_first' to run the first available formatter from the list
-          javascript = { 'eslint', 'prettier' },
-          typescript = { 'eslint', 'prettier' },
-          typescriptreact = { 'eslint', 'prettier' },
+          javascript = { 'eslint_d', 'prettier' },
+          typescript = { 'eslint_d', 'prettier' },
+          typescriptreact = { 'eslint_d', 'prettier' },
           html = { 'prettier' },
           css = { 'prettier' },
           scss = { 'prettier' },
@@ -860,7 +861,7 @@ require('lazy').setup({
               end
             end,
           },
-          eslint = {
+          eslint_d = {
             cwd = require('conform.util').root_file { 'package.json' },
             append_args = function(self, ctx)
               local config = 'config/eslint.config.ts'
