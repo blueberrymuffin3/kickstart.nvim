@@ -712,7 +712,18 @@ require('lazy').setup({
         clangd = {},
         -- gopls = {},
         -- pyright = {},
-        rust_analyzer = {},
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              imports = {
+                granularity = {
+                  group = 'item',
+                  enforce = true,
+                },
+              },
+            },
+          },
+        },
         -- csharp_ls = {},
         roslyn = {},
         nil_ls = is_nixos and {} or nil,
