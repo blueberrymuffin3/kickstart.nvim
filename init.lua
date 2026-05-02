@@ -121,6 +121,10 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
+if vim.env.TMUX ~= nil then
+  vim.g.clipboard = 'tmux'
+end
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -1054,6 +1058,7 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
