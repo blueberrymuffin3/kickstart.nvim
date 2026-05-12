@@ -763,6 +763,7 @@ require('lazy').setup({
         codebook = {
           filetypes = {
             'cs',
+            'yaml',
             unpack((vim.lsp.config['codebook'] or {}).filetypes or {}),
           },
         },
