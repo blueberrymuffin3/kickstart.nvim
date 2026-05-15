@@ -91,4 +91,18 @@ return {
     config = true,
   },
   'alvan/vim-closetag',
+  {
+    'clabby/difftastic.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'folke/snacks.nvim',
+    },
+    opts = {
+      download = true,
+      vcs = 'git',
+      snacks_picker = {
+        enabled = true,
+      },
+    },
+  },
 }
